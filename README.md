@@ -1,3 +1,89 @@
+# Rama Shoppers
+
+A full-stack mobile-phone store with customer ordering, role-protected administration, inventory and order management. Built with Node.js, Express, MongoDB and EJS; deployed on Render.
+
+## Security first
+
+- **No administrator email or password is published or supported as a default.**
+- Provision the first administrator through the deployment-controlled setup process.
+- Keep administrator credentials in the password manager or secure deployment configuration only.
+- Use a unique long password and force a reset for any temporary account.
+- Never commit database connection strings, JWT secrets, email passwords, Flutterwave keys or `.env` files.
+- Do not include secrets or customer data in release archives. Use a private release store for deployment packages.
+
+## Features
+
+### Customer storefront
+- Product catalogue, search and filters
+- Cart and checkout flow
+- Order tracking and invoices
+- WhatsApp enquiry links
+
+### Administration
+- Product and image management
+- Inventory and order-status controls
+- Store settings and reporting
+- Role-protected administration routes
+
+## Local development
+
+1. Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/yourusername/huzaifa-mobile-store.git
+cd huzaifa-mobile-store
+npm install
+```
+
+2. Create a local `.env` file. Use placeholders only in documentation; obtain real values from the deployment secret manager:
+
+```env
+PORT=3001
+NODE_ENV=development
+MONGODB_URI=<your-mongodb-connection-string>
+JWT_SECRET=<generate-a-unique-32-plus-character-secret>
+EMAIL_USER=<your-business-email>
+EMAIL_PASS=<your-email-app-password>
+FLUTTERWAVE_PUBLIC_KEY=<your-flutterwave-public-key>
+FLUTTERWAVE_SECRET_KEY=<your-flutterwave-secret-key>
+BASE_URL=http://localhost:3001
+```
+
+3. Start the service:
+
+```bash
+npm start
+```
+
+The local storefront is available at `http://localhost:3001`; administrative access depends on the securely provisioned account.
+
+## Render deployment
+
+1. Connect the repository to a Render Web Service.
+2. Set the build command to `npm install` and the start command to `npm start`.
+3. Add all runtime values in Render Environment settings. Do not place them in the repository, README or ZIP packages.
+4. Set `BASE_URL` to the deployed HTTPS address.
+5. Keep production payment mode disabled until a sandbox checkout, webhook verification, paid-order update and invoice have all passed.
+
+## Environment and access checklist
+
+- [ ] Database user has least-privilege access
+- [ ] JWT secret is unique per environment
+- [ ] Email uses an app password, not an account password
+- [ ] Flutterwave test and live keys are kept separate
+- [ ] Public repository contains no secrets, credentials or customer exports
+- [ ] Admin accounts use strong unique passwords
+- [ ] Release packages are private or removed after deployment
+
+## Stack
+
+Node.js, Express, MongoDB/Mongoose, JWT, EJS, Flutterwave, Nodemailer and Render.
+
+## Business details
+
+Rama Shoppers · Kampala, Uganda
+
+For store support, use the approved business contact channels configured in the live store.
 # Huzaifa Mobile Store
 
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
